@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import LoginPage from "./LoginPage";
-import SignupPage from "./SignupPage";
-import DashboardPage from "./DashboardPage";
+import Navbar from "./components/Navbar";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import DashboardPage from "./pages/DashboardPage";
+import HomePage from "./pages/HomePage";
 import { logout } from "./api";
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage setTokens={setTokens} />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <Navigate to="/login" />} />

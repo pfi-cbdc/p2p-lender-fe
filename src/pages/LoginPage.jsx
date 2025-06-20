@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { signin } from "./api";
+import { signin } from "../api";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 function LoginPage({ setTokens }) {
   const [username, setUsername] = useState("");
@@ -21,10 +22,12 @@ function LoginPage({ setTokens }) {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "2rem auto" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSignin}>
+    <div className="login-container">
+      <h2 className="login-title">Login</h2>
+      <form className="login-form" onSubmit={handleSignin}>
+        <label>Username</label>
         <input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+        <label>Password</label>
         <input placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required type="password" />
         <button type="submit">Sign In</button>
       </form>

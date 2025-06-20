@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { signup } from "./api";
+import { signup } from "../api";
 import { useNavigate } from "react-router-dom";
+import "./SignupPage.css";
 
 function SignupPage() {
   const [username, setUsername] = useState("");
@@ -19,11 +20,14 @@ function SignupPage() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "2rem auto" }}>
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
+    <div className="signup-container">
+      <h2 className="signup-title">Signup</h2>
+      <form className="signup-form" onSubmit={handleSignup}>
+        <label>Username</label>
         <input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+        <label>Email</label>
         <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required type="email" />
+        <label>Password</label>
         <input placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required type="password" />
         <button type="submit">Sign Up</button>
       </form>
